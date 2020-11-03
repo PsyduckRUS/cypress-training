@@ -1,0 +1,24 @@
+{
+  "name": "cypress-training",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "cypress": "^5.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PsyduckRUS/cypress-training.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PsyduckRUS/cypress-training/issues"
+  },
+  "homepage": "https://github.com/PsyduckRUS/cypress-training#readme"
+}
