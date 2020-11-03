@@ -1,15 +1,8 @@
- describe('Login', function() {
+ describe('Basics', function() {
 
-     it('Sign-in', function() {
-        cy.visit('https://react-redux.realworld.io/#/login')
-        cy.contains('Your Feed').should('not.exist')
-        cy.get('form').within(($form) => {
-            cy.get('input[type="email"]').type('tolik.trollik@yandex.ru')
-            cy.get('input[type="password"]').type('tester450')
-            cy.root().submit()
-        })
-        cy.contains('Your Feed').should('exist')     
-    })
+    before(() => {
+        cy.SignIn()
+      })
 
     it('Create an item', function() {
         cy.contains('New Post').click()
@@ -19,23 +12,29 @@
             cy.get('textarea').last().type('Test 2')
             cy.contains('Publish Article').click()
         })
-    })
 
-    it('Check if item exists on your page', function() {
-        cy.visit('https://react-redux.realworld.io/#/@tester450')
-        cy.get('div[class="row"]').within(($row) => {
-            cy.get('.article-preview').first().within(($prev) => {
-                cy.contains('Test').should('exist')
+        cy.get('ul>li>a').last()
+        .click()
+        .as('load-prof')
+        .wait(800)
+        .get('div[class="row"]')
+        .within(($row) => {
+            cy.get('.article-preview')
+            .first()
+            .within(($prev) => {
+                cy.contains('Test')
+                .should('exist')
+                .click()
+                .contains('Test')
+                .should('exist')
+                .get('h1')
+                .should('exist')
+                .should('be.visible')
+                       
             })
         })
-    })
 
-    it('Click on an item from your page', function() {
-        cy.get('div[class="row"]').within(($row) => {
-            cy.get('.article-preview').first().within(($prev) => {
-                cy.contains('Test').click()
-            })
-        })
+
     })
 
     it('Fav an item', function() {
@@ -54,5 +53,7 @@
             })
         })
     })
+
+
 
  })
